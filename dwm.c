@@ -318,6 +318,7 @@ static int screen;
 static int sw, sh; /* X display screen geometry width, height */
 static int bh, blw = 0; /* bar geometry */
 static int lrpad; /* sum of left and right padding for text */
+static unsigned int layoutIndex = 0;
 static int (*xerrorxlib)(Display*, XErrorEvent*);
 static unsigned int numlockmask = 0;
 static void (*handler[LASTEvent])(XEvent*) = {
@@ -1707,15 +1708,19 @@ int stackpos(const Arg* arg)
 
 void setlayout(const Arg* arg)
 {
-    if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
+    Layout* l = &((Layout*)arg->v)[layoutIndex];
+    if (!arg || !l || l != selmon->lt[selmon->sellt])
         selmon->sellt ^= 1;
-    if (arg && arg->v)
-        selmon->lt[selmon->sellt] = (Layout*)arg->v;
+    if (arg && l)
+        selmon->lt[selmon->sellt] = l;
     strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, sizeof selmon->ltsymbol);
     if (selmon->sel)
         arrange(selmon);
     else
         drawbar(selmon);
+    if (layoutIndex++ == 8){
+        layoutIndex = 0;
+    }
 }
 
 /* arg > 1.0 will set mfact absolutely */

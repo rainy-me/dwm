@@ -71,7 +71,7 @@ static const Layout layouts[] = {
     { "|M|",  centeredmaster         }, // Master in middle, slaves on sides
     { ">M>",  centeredfloatingmaster }, // Same but master floats
     { "><>",  NULL                   }, // no layout function means floating behavior
-    { NULL,   NULL                   },
+    // { NULL,   NULL                   },
 };
 
 // key definitions 
@@ -146,14 +146,7 @@ static Key keys[] = {
     { MODKEY,             XK_w,              spawn,          SHCMD(BROWSER)                                            },
     { MODKEY,             XK_r,              spawn,          SHCMD(TERMINAL " -e lf")                                  },
     { MODKEY | ShiftMask, XK_r,              spawn,          SHCMD(TERMINAL " -e htop")                                },
-    { MODKEY,             XK_t,              setlayout,      { .v = &layouts[0] }                                      }, // tile
-    { MODKEY | ShiftMask, XK_t,              setlayout,      { .v = &layouts[1] }                                      }, // bstack
-    { MODKEY,             XK_y,              setlayout,      { .v = &layouts[2] }                                      }, // spiral
-    { MODKEY | ShiftMask, XK_y,              setlayout,      { .v = &layouts[3] }                                      }, // dwindle
-    { MODKEY,             XK_u,              setlayout,      { .v = &layouts[4] }                                      }, // deck
-    { MODKEY | ShiftMask, XK_u,              setlayout,      { .v = &layouts[5] }                                      }, // monocle
-    { MODKEY,             XK_i,              setlayout,      { .v = &layouts[6] }                                      }, // centeredmaster
-    { MODKEY | ShiftMask, XK_i,              setlayout,      { .v = &layouts[7] }                                      }, // centeredfloatingmaster
+    { MODKEY,             XK_t,              setlayout,      { .v = &layouts }                                         },
     { MODKEY,             XK_o,              incnmaster,     { .i = +1 }                                               },
     { MODKEY | ShiftMask, XK_o,              incnmaster,     { .i = -1 }                                               },
     { MODKEY,             XK_backslash,      view,           { 0 }                                                     },
@@ -162,7 +155,6 @@ static Key keys[] = {
     { MODKEY,             XK_s,              togglesticky,   { 0 }                                                     },
     { MODKEY,             XK_slash,          spawn,          SHCMD("dmenu_run")                                        },
     { MODKEY,             XK_f,              togglefullscr,  { 0 }                                                     },
-    { MODKEY | ShiftMask, XK_f,              setlayout,      { .v = &layouts[8] }                                      },
     { MODKEY,             XK_g,              shiftview,      { .i = -1 }                                               },
     { MODKEY | ShiftMask, XK_g,              shifttag,       { .i = -1 }                                               },
     { MODKEY,             XK_h,              setmfact,       { .f = -0.05 }                                            },
