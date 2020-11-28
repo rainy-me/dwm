@@ -2,7 +2,8 @@
 
 // Constants 
 #define TERMINAL "kitty"
-#define TERMCLASS "St"
+#define BROWSER "firefox-developer-edition"
+
 // appearance 
 static unsigned int borderpx = 2; // border pixel of windows 
 static unsigned int snap = 32; // snap pixel 
@@ -48,8 +49,6 @@ static const Rule rules[] = {
 	//	WM_NAME(STRING) = title
 	
     // class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor 
-    { "Gimp",    NULL,     NULL,           1 << 8,   0, 0, 0, -1 },
-    { TERMCLASS, NULL,     NULL,           0,        0, 1, 0, -1 },
     { NULL,      NULL,     "Event Tester", 0,        0, 0, 1, -1 },
     { NULL,      "spterm", NULL,           SPTAG(0), 1, 1, 0, -1 },
     { NULL,      "spcalc", NULL,           SPTAG(1), 1, 1, 0, -1 },
@@ -144,8 +143,7 @@ static Key keys[] = {
     { MODKEY,             XK_0,              view,           { .ui = ~0 }                                              },
     { MODKEY | ShiftMask, XK_0,              tag,            { .ui = ~0 }                                              },
     { MODKEY,             XK_Tab,            view,           { 0 }                                                     },
-    { MODKEY | ShiftMask, XK_q,              spawn,          SHCMD("c")                                                },
-    { MODKEY,             XK_w,              spawn,          SHCMD("$BROWSER")                                         },
+    { MODKEY,             XK_w,              spawn,          SHCMD(BROWSER)                                            },
     { MODKEY,             XK_r,              spawn,          SHCMD(TERMINAL " -e lf")                                  },
     { MODKEY | ShiftMask, XK_r,              spawn,          SHCMD(TERMINAL " -e htop")                                },
     { MODKEY,             XK_t,              setlayout,      { .v = &layouts[0] }                                      }, // tile
@@ -186,7 +184,7 @@ static Key keys[] = {
     { MODKEY | ShiftMask, XK_Page_Down,      shifttag,       { .i = +1 }                                               },
     { MODKEY,             XK_space,          zoom,           { 0 }                                                     },
     { MODKEY | ShiftMask, XK_space,          togglefloating, { 0 }                                                     },
-    { 0,                  XF86XK_WWW,        spawn,          SHCMD("$BROWSER")                                         },
+    { 0,                  XF86XK_WWW,        spawn,          SHCMD(BROWSER)                                            },
     { 0,                  XF86XK_DOS,        spawn,          SHCMD(TERMINAL)                                           },
     { 0,                  XF86XK_TaskPane,   spawn,          SHCMD(TERMINAL " -e htop")                                },
     { 0,                  XF86XK_Mail,       spawn,          SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks") },
