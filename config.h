@@ -2,7 +2,7 @@
 
 // Constants 
 #define TERMINAL "kitty"
-#define BROWSER "firefox-developer-edition"
+#define BROWSER "chromium"
 
 // appearance 
 static unsigned int borderpx = 2; // border pixel of windows 
