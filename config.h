@@ -144,7 +144,7 @@ static Key keys[] = {
     { MODKEY | ShiftMask, XK_0,              tag,            { .ui = ~0 }                                              },
     { MODKEY,             XK_Tab,            view,           { 0 }                                                     },
     { MODKEY,             XK_w,              spawn,          SHCMD(BROWSER)                                            },
-    { MODKEY,             XK_r,              spawn,          SHCMD(TERMINAL " -e lf")                                  },
+    { MODKEY,             XK_n,              spawn,          SHCMD(TERMINAL " -e nnn")                                 },
     { MODKEY | ShiftMask, XK_r,              spawn,          SHCMD(TERMINAL " -e htop")                                },
     { MODKEY,             XK_t,              setlayout,      { .v = &layouts }                                         },
     { MODKEY,             XK_o,              incnmaster,     { .i = +1 }                                               },
